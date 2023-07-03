@@ -1,0 +1,45 @@
+body {
+    background: #282828;
+    font-family: "URW Gothic", Regular Oblique;
+    font-size: 19px;
+    color: #ebdbb2;
+}
+
+.main {
+    border: none;
+    padding: 0;
+}
+
+.post {
+    margin-top: 20px;
+    border: 2px solid #d79921;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.date {
+    font-size: 12px;
+    font-style: italic;
+    margin: 5px 0 0 0;
+    color: #a89984;
+    text-align: end;
+}
+
+.author {
+    font-size: 14px;
+    margin: 0px 0px 0px 0px;
+    color: #a89984;
+}
+
+.title h3 {
+    margin: 5px 0px 0px 0px;
+}
+
+.description p {
+    margin: 10px 0 5px 0;
+}
+
+.image img {
+    margin: 5px 0 0 0;
+    max-width: 100%;
+}

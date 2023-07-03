@@ -1,0 +1,37 @@
+body {
+    background: #282828;
+    font-family: "URW Gothic", Regular Oblique;
+    font-size: 19px;
+    color: #ebdbb2;
+}
+
+.line {
+    border-top: 1px solid #665c54;
+    margin: 0 auto 10px auto;
+}
+
+.form-control, .form-control-file {
+    border: none;
+    background-color: #665c54;
+    color: #ebdbb2;
+    opacity: 0.6;
+    border-radius: 0.25rem;
+}
+
+
+.textarea:focus, input[type=text]:focus {
+    background-color: #928374;
+    color: #fbf1c7;
+}
+input[type=text] {
+    background-color: #665c54;
+    color: #ebdbb2;
+}
+
+.photo {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 3px solid #ebdbb2;
+}
