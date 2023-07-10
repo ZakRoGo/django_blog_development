@@ -9,7 +9,7 @@ class Post(models.Model):
     date = models.DateField(null=True)
     image = models.ImageField(upload_to="images/", null=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, related_name="posts"
+        User, on_delete=models.CASCADE, null=True, related_name="author"
     )
 
     def __str__(self):

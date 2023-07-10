@@ -1,0 +1,48 @@
+body {
+    background: #282828;
+    font-family: "URW Gothic", Regular Oblique;
+    font-size: 19px;
+    color: #ebdbb2;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+.social {
+    display: flex;
+    gap: 15px;
+}
+
+.username {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 30px;
+}
+
+.photo {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 3px solid #ebdbb2;
+}
+
+.line {
+    border-top: 1px solid #ebdbb2;
+}
+
+.social a { text-decoration: none; color: #ebdbb2; transition: all 120ms ease-in;}
+.social a:link {color: #ebdbb2; text-decoration: none;}
+.social a:hover {color: #d5c4a1;text-decoration: none;}

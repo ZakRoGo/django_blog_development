@@ -23,8 +23,9 @@
                             <a href="{{ post.author }}">{{ post.author }}</a>
                         </div>
                         <div class="title">
-                            <h3>{{ post.title }}</h3>
+                            <h4><b>{{ post.title }}</b></h4>
                         </div>
+                        <div class="line"></div>
                         <div class="description">
                             <p>{{ post.description }}</p>
                         </div>
@@ -34,7 +35,6 @@
                             </a>
                         </div>
                         <div class="date">{{ post.date }}</div>
-                        <div class="line"></div>
                     </div>
                 {% endfor %}
             </div>

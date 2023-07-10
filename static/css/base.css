@@ -9,12 +9,13 @@
 }
 
 .nav-list {
+    margin-top: 10px;
     margin-right: 10px;
     margin-left: 10px;
     border-radius: 10px;
     padding: 1rem 0;
     color: #ebdbb2;
-    background-color: #665c54;
+    background-color: #3c3836;
     display: flex;
     align-items: center;
 }

@@ -11,8 +11,9 @@ body {
 }
 
 .post {
+    background: #3c3836;
     margin-top: 20px;
-    border: 2px solid #d79921;
+    /* border: 2px solid #d79921; */
     padding: 10px;
     border-radius: 10px;
 }
@@ -42,4 +43,9 @@ body {
 .image img {
     margin: 5px 0 0 0;
     max-width: 100%;
+}
+
+.line {
+    border: 1px solid #665c54;
+    border-radius: 100%;
 }

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from .models import Profile
+from posts.models import Post
 from django.shortcuts import render, redirect
 from .forms import RegisterUserForm
 from django.contrib.auth import login
@@ -27,13 +28,16 @@ def register_request(request):
     )
 
 
-def profile(request):
-    return render(request, "profile.html")
-
-
-def user_profile(request, username):
+def profile(request, username):
     u = User.objects.get(username=username)
-    return render(request, "user_profile.html", {"username": u})
+    return render(request, "profile.html", {"username": u, "post": Post.objects.all()})
+
+
+# def user_profile(request, username):
+#     u = User.objects.get(username=username)
+#     return render(
+#         request, "user_profile.html", {"username": u, "post": Post.objects.all()}
+#     )
 
 
 @login_required
@@ -48,7 +52,7 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, "Your profile is updated successfully")
-            return redirect("profile")
+            return redirect("user_profile")
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)

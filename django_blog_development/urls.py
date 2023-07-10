@@ -23,7 +23,7 @@ from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name="hulahup"),
     path(
         "login/",
         TemplateView.as_view(template_name="registration/login.html"),
@@ -31,10 +31,10 @@ urlpatterns = [
     ),
     path("accounts/", include("django.contrib.auth.urls")),
     path("", posts_views.post_page, name="post"),
-    path("register/", users_views.register_request, name="reigster"),
+    path("register/", users_views.register_request, name="register"),
     path("edit_profile/", users_views.edit_profile, name="edit_profile"),
     path("profile/", users_views.profile, name="profile"),
-    path("<username>/", users_views.user_profile),
+    # path("<username>/", users_views.user_profile, name="user_profile"),
 ]
 
 # for images
