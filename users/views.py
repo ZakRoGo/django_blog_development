@@ -38,12 +38,12 @@ def profile(request, username=None):
     args1 = {
         "post_owner": post_owner,
     }
-    return render(request, "profile.html", args1)
+    return render(request, "users_app/profile.html", args1)
 
 
 def user_profile(request, username):
     u = User.objects.get(username=username)
-    return render(request, "user_profile.html", {"username": u})
+    return render(request, "users_app/user_profile.html", {"username": u})
 
 
 @login_required

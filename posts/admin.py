@@ -5,4 +5,9 @@ from .models import Post
 # Register your models here.
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    pass
+    exclude = ["author", "admin"]
+
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:
+            obj.author = request.user
+        super().save_model(request, obj, form, change)
