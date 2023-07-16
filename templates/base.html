@@ -15,9 +15,11 @@
     <body>
         <navbar>
         <ul class="nav-list">
-            <li class="nav-item">
-                <a href="{% url 'profile' username.username %}">{{ user.username.title }}</a>
-            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item profile">
+                    <a href="{% url 'profile' username=request.user.username %}">{{ user.username.title }}</a>
+                </li>
+            {% endif %}
             <li class="nav-item">
                 <a href="{% url 'post' %}">Posts</a>
             </li>
@@ -25,14 +27,14 @@
                 <li class="nav-item">
                     <a href="{% url 'edit_profile' %}">Edit Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item left_side">
                     <a href="{% url 'logout' %}">Logout</a>
                 </li>
             {% else %}
-                <li class="nav-item">
+                <li class="nav-item left_side">
                     <a href="{% url 'login' %}">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item left_side">
                     <a href="{% url 'register' %}">Register</a>
                 </li>
             {% endif %}

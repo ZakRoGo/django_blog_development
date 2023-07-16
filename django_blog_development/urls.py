@@ -33,8 +33,8 @@ urlpatterns = [
     path("", posts_views.post_page, name="post"),
     path("register/", users_views.register_request, name="register"),
     path("edit_profile/", users_views.edit_profile, name="edit_profile"),
-    path("profile/", users_views.profile, name="profile"),
-    # path("<username>/", users_views.user_profile, name="user_profile"),
+    path("profile/<str:username>/", users_views.profile, name="profile"),
+    path("<str:username>/", users_views.user_profile, name="user_profile"),
 ]
 
 # for images

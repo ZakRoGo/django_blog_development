@@ -20,11 +20,11 @@
         <body>
             <div class="information">
                 <div class="photo">
-                    <img src="{{ username.profile.image.url }}" width="200px" />
+                    <img src="{{ user.profile.image.url }}" width="200px" />
                 </div>
                 <div class="info">
                     <div class="username">
-                        <b>{{ username.username }}</b>
+                        <b>{{ user.username }}</b>
                         <div class="social">
                             <a class="bi bi-telegram" href="{{ username.profile.tg_url }}"></a>
                             <a class="bi bi-youtube" href="{{ username.profile.youtube_url }}"></a>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="line"></div>
                     <div class="bio">
-                        <b>Bio:</b> {{ username.profile.bio }}
+                        <b>Bio:</b> {{ user.profile.bio }}
                     </div>
                     <div class="posts_list">
                         <div class="user_posts"><b>User posts:</b></div>

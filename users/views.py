@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
-from .models import Profile
 from posts.models import Post
-from django.shortcuts import render, redirect
+from .models import Profile
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import RegisterUserForm
 from django.contrib.auth import login
 from django.contrib import messages
@@ -28,16 +28,22 @@ def register_request(request):
     )
 
 
-def profile(request, username):
+def profile(request, username=None):
+    if username:
+        post_owner = get_object_or_404(User, username=username)
+
+    else:
+        post_owner = request.user
+
+    args1 = {
+        "post_owner": post_owner,
+    }
+    return render(request, "profile.html", args1)
+
+
+def user_profile(request, username):
     u = User.objects.get(username=username)
-    return render(request, "profile.html", {"username": u, "post": Post.objects.all()})
-
-
-# def user_profile(request, username):
-#     u = User.objects.get(username=username)
-#     return render(
-#         request, "user_profile.html", {"username": u, "post": Post.objects.all()}
-#     )
+    return render(request, "user_profile.html", {"username": u})
 
 
 @login_required

@@ -24,7 +24,7 @@
                 </div>
                 <div class="info">
                     <div class="username">
-                        <b>{{ user.username }}</b>
+                        <b>{{ username.username }}</b>
                         <div class="social">
                             <a class="bi bi-telegram" href="{{ user.profile.tg_url }}"></a>
                             <a class="bi bi-youtube" href="{{ user.profile.youtube_url }}"></a>
@@ -32,10 +32,12 @@
                     </div>
                     <div class="line"></div>
                     <div class="bio">
-                        <b>Bio:</b> {{ user.profile.bio }}
+                        <b>Bio:</b> {{ username.profile.bio }}
                     </div>
                 </div>
-                {{ user.profile.user_posts.title }}
+                {% for post in posts %}
+                    {{ username.post.author }}
+                {% endfor %}
             </div>
         </body>
     </html>
