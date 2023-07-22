@@ -1,8 +1,17 @@
-body {
-    background: #282828;
-    font-family: "URW Gothic", Regular Oblique;
-    font-size: 19px;
-    color: #ebdbb2;
+.photo {
+    position: relative;
+    overflow:hidden;
+    margin: auto;
+    width:190px;
+    height:190px;
+}
+.photo img {
+    position: absolute;
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius: 50%;
+    border: 3px solid #ebdbb2;
 }
 
 .line {
@@ -26,12 +35,4 @@ body {
 input[type=text] {
     background-color: #665c54;
     color: #ebdbb2;
-}
-
-.photo {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border: 3px solid #ebdbb2;
 }

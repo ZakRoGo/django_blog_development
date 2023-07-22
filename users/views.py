@@ -3,7 +3,7 @@ from posts.models import Post
 from .models import Profile
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import RegisterUserForm
-from django.contrib.auth import login
+from django.contrib.auth import get_user, login
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
@@ -48,6 +48,7 @@ def user_profile(request, username):
 
 @login_required
 def edit_profile(request):
+    profile = get_object_or_404(Profile, user=request.user)
     if request.method == "POST":
         user_form = UpdateUserForm(request.POST, instance=request.user)
         profile_form = UpdateProfileForm(
@@ -58,7 +59,7 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, "Your profile is updated successfully")
-            return redirect("user_profile")
+            return redirect("profile", profile.user.username)
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)

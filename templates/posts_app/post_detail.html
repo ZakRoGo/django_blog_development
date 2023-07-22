@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/posts_css/post_detail.css' %}" />
+    <title>Post Detail Page</title>
+{% endblock head %}
+{% block content %}
+    <div class="info_block">
+        <div class="photo">
+            <img src="{{ post.author.profile.image.url }}" width="200px">
+        </div>
+        <div class="username">
+            <a href="{% url 'user_profile' post.author.username %}"><b>{{ post.author.profile.user.username }}</b></a>
+        </div>
+        <div class="line"></div>
+        <div class="title">
+            <h3>
+                <b>{{ post.title }}</b>
+            </h3>
+        </div>
+        <div class="description">{{ post.description }}</div>
+        <div class="image">
+            <img src="{{ post.image.url }}">
+        </div>
+    </div>
+    {% if post.author.profile.user.username == user.username or user.is_staff %}
+        <div class="info_block redact">
+            <a href="{% url 'posts:post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    {% endif %}
+{% endblock content %}

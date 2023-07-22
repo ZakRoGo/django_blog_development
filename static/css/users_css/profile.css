@@ -1,20 +1,20 @@
-body {
-    background: #282828;
-    font-family: "URW Gothic", Regular Oblique;
-    font-size: 19px;
-    color: #ebdbb2;
+.photo {
+    position: relative;
+    overflow:hidden;
+    margin: auto;
+    width:190px;
+    height:190px;
 }
-
-.information {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-}
-
-.social {
-    display: flex;
-    gap: 15px;
+.photo img {
+    position: absolute;
+    /* top:50%; */
+    /* left:50%; */
+    /* transform:translate(-50%,-50%); */
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius: 50%;
+    border: 3px solid #ebdbb2;
 }
 
 .username {
@@ -25,18 +25,15 @@ body {
     justify-content: center;
 }
 
+.social {
+    display: flex;
+    gap: 15px;
+}
+
 .info {
     display: flex;
     flex-direction: column;
     gap: 10px 30px;
-}
-
-.photo {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border: 3px solid #ebdbb2;
 }
 
 .line {

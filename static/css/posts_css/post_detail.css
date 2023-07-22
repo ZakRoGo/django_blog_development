@@ -1,0 +1,41 @@
+.photo {
+    position: relative;
+    overflow:hidden;
+    margin: auto;
+    width:190px;
+    height:190px;
+}
+.photo img {
+    position: absolute;
+    width:190px;
+    height:190px;
+    object-fit:cover;
+    border-radius: 50%;
+    border: 3px solid #ebdbb2;
+}
+
+.username {
+    display: flex;
+    justify-content: center;
+}
+
+.username a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #ebdbb2;
+}
+.username a:hover {
+    color: #d5c4a1;
+}
+
+.line {
+    border-top: 1px solid #ebdbb2;
+    margin-bottom: 10px;
+}
+
+.image {
+    display: flex;
+}
+
+.image img {
+    max-width: 100%;
+}
