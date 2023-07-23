@@ -10,7 +10,7 @@
             <img src="{{ post.author.profile.image.url }}" width="200px">
         </div>
         <div class="username">
-            <a href="{% url 'user_profile' post.author.username %}"><b>{{ post.author.profile.user.username }}</b></a>
+            <a href="{% url 'users:user_profile' post.author.username %}"><b>{{ post.author.profile.user.username }}</b></a>
         </div>
         <div class="line"></div>
         <div class="title">
@@ -27,8 +27,12 @@
     </div>
     {% if post.author.profile.user.username == user.username or user.is_staff %}
         <div class="info_block redact">
-            <div class="redact"><a href="{% url 'posts:update_post' post.pk %}" class="btn btn-warning">Redact</a></div>
-            <div class="delete"><a href="{% url 'posts:post_delete' post.pk %}" class="btn btn-danger">Delete</a></div>
+            <form action="{% url 'posts:update_post' post.pk %}">
+                <button class="btn btn-warning redact">Redact</button>
+            </form>
+            <form action="{% url 'posts:post_delete' post.pk %}">
+                <button class="btn btn-danger delete">Delete</button>
+            </form>
         </div>
     {% endif %}
 {% endblock content %}

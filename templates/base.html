@@ -15,41 +15,48 @@
         {% endblock head %}
     </head>
     <body>
-        <navbar>
-            <ul class="nav-list">
+        <div class="nav-list">
+            <div class="left-side">
+                <div class="nav-item home">
+                    <a href="{% url 'home' %}"><b>Home</b></a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'posts:post' %}">Posts</a>
+                </div>
                 {% if user.is_authenticated %}
-                    <li class="nav-item profile">
-                        <a href="{% url 'profile' username=request.user.username %}">{{ user.username.title }}</a>
-                    </li>
-                {% endif %}
-                    <li class="nav-item">
-                        <a href="{% url 'posts:post' %}">Posts</a>
-                    </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'edit_profile' %}">Edit Profile</a>
-                    </li>
-                    <li class="nav-item left_side">
-                        <a href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item left_side">
+                    <div class="nav-item left_side">
                         <a href="{% url 'posts:add_post' %}">Create post</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item left_side">
-                        <a href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item left_side">
-                        <a href="{% url 'register' %}">Register</a>
-                    </li>
+                    </div>
                 {% endif %}
+            </div>
+            <div class="right-side">
                 {% if user.is_staff %}
-                    <li class="nav-item">
+                    <div class="nav-item">
                         <a href="{% url 'admin:index' %}">Admin</a>
-                    </li>
+                    </div>
                 {% endif %}
-            </ul>
-        </navbar>
+                {% if user.is_authenticated %}
+                    <div class="nav-item">
+                        <a href="{% url 'users:edit_profile' %}">Edit Profile</a>
+                    </div>
+                    <div class="nav-item left_side">
+                        <a href="{% url 'users:logout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="nav-item">
+                        <a href="{% url 'users:login' %}">Login</a>
+                    </div>
+                    <div class="nav-item">
+                        <a href="{% url 'users:register' %}">Register</a>
+                    </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <div class="nav-item profile">
+                    <a href="{% url 'users:profile' username=request.user.username %}"><b>{{ user.username.title }}</b></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
         <div class="main">
             {% block content %}
             {% endblock content %}

@@ -40,9 +40,8 @@ def post_delete(request, pk):
 
 def update_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
-
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES or None, instance=post)
         if form.is_valid():
             form.save()
             return redirect("posts:post_detail", post.pk)

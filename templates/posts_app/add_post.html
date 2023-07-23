@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/posts_css/post.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/posts_css/add_post.css' %}" />
     <title>Add Post Page</title>
 {% endblock head %}
 {% block content %}
     <div class="info_block">
+        {% load crispy_forms_tags %}
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button class="btn btn-warning">Create post</button>
         </form>
     </div>

@@ -14,10 +14,15 @@
         <div class="info">
             <div class="username">
                 <b>{{ user.username }}</b>
-                <div class="social">
-                    <a class="bi bi-telegram" href="{{ username.profile.tg_url }}"></a>
-                    <a class="bi bi-youtube" href="{{ username.profile.youtube_url }}"></a>
-                </div>
+                {% if username.profile.tg_url or username.profile.youtube_url %}
+                    <div class="social">
+                        {% if username.profile.tg_url %}
+                            <a class="bi bi-telegram" href="{{ user.profile.tg_url }}"></a>
+                        {% elif username.profile.youtube_url %}
+                            <a class="bi bi-youtube" href="{{ user.profile.youtube_url }}"></a>
+                        {% endif %}
+                    </div>
+                {% endif %}
             </div>
             <div class="line"></div>
             <div class="bio">
