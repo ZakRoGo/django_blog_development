@@ -23,7 +23,7 @@
                     </li>
                 {% endif %}
                     <li class="nav-item">
-                        <a href="{% url 'post' %}">Posts</a>
+                        <a href="{% url 'posts:post' %}">Posts</a>
                     </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -33,7 +33,7 @@
                         <a href="{% url 'logout' %}">Logout</a>
                     </li>
                     <li class="nav-item left_side">
-                        <a href="{% url 'add_post' %}">Create post</a>
+                        <a href="{% url 'posts:add_post' %}">Create post</a>
                     </li>
                 {% else %}
                     <li class="nav-item left_side">

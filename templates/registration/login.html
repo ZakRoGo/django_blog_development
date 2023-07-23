@@ -2,10 +2,11 @@
 {% block title %}Login{% endblock %}
 {% block content %}
     <div class="info_block">
+        {% load crispy_forms_tags %}
         <h2>Log In</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button type="submit">Log In</button>
         </form>
     </div>

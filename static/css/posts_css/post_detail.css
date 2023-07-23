@@ -39,3 +39,8 @@
 .image img {
     max-width: 100%;
 }
+
+.redact {
+    display: flex;
+    justify-content: space-between;
+}

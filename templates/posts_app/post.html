@@ -11,7 +11,7 @@
                 <a href="{% url 'user_profile' post.author.username %}">{{ post.author }}</a>
             </div>
             <div class="title">
-                <a href="{% url 'post_detail' pk=post.pk %}" class="detail_link">
+                <a href="{% url 'posts:post_detail' post.pk %}" class="detail_link">
                     <h4>
                         <b>{{ post.title }}</b>
                     </h4>

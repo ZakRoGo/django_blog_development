@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User
-from posts.models import Post
 from .models import Profile
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import RegisterUserForm
-from django.contrib.auth import get_user, login
+from django.contrib.auth import login
 from django.contrib import messages
 from .forms import UpdateUserForm, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
@@ -17,7 +16,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful!")
-            return redirect("post")
+            return redirect("posts:post")
 
         messages.error(request, "Unsuccessful registration. Invalid Information.")
     form = RegisterUserForm()

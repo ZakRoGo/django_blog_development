@@ -3,4 +3,10 @@ from . import views
 
 app_name = "posts"
 
-urlpatterns = [path("<int:pk>/", views.post_delete, name="post_delete")]
+urlpatterns = [
+    path("", views.post_page, name="post"),
+    path("delete/<int:pk>/", views.post_delete, name="post_delete"),
+    path("update/<int:pk>/", views.update_post, name="update_post"),
+    path("detail/<int:pk>/", views.post_detail, name="post_detail"),
+    path("create/", views.add_post, name="add_post"),
+]

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+{% endblock head %}
+{% block content %}
+    <div class="info_block">
+        {% load crispy_forms_tags %}
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-warning" type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock content %}
