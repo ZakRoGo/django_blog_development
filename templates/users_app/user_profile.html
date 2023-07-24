@@ -18,7 +18,8 @@
                     <div class="social">
                         {% if username.profile.tg_url %}
                             <a class="bi bi-telegram" href="{{ username.profile.tg_url }}"></a>
-                        {% elif username.profile.youtube_url %}
+                        {% endif %}
+                        {% if username.profile.youtube_url %}
                             <a class="bi bi-youtube" href="{{ username.profile.youtube_url }}"></a>
                         {% endif %}
                     </div>

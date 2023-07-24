@@ -52,7 +52,7 @@
                 {% endif %}
                 {% if user.is_authenticated %}
                     <div class="nav-item profile">
-                    <a href="{% url 'users:profile' username=request.user.username %}"><b>{{ user.username.title }}</b></a>
+                    <a href="{% url 'users:user_profile' username=request.user.username %}"><b>{{ user.username.title }}</b></a>
                     </div>
                 {% endif %}
             </div>

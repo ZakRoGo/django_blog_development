@@ -6,6 +6,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ["image", "title", "description"]
+        labels = {"image": ""}
 
 
 class NewsContentForm(forms.ModelForm):

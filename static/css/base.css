@@ -58,3 +58,7 @@ body {
     margin-left: 2rem;
     font-size: 20px;
 }
+
+form {
+    margin: 0;
+}

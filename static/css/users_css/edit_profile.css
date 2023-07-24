@@ -43,4 +43,5 @@ input[type=file]::file-selector-button {
     background-color: #665c54;
     color: #ebdbb2;
     cursor: pointer;
+    border-radius: .25rem;
 }

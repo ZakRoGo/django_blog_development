@@ -1,13 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 {% block head %}
+    <style>
+        .textarea:focus, input[type=text]:focus {
+            background-color: #928374;
+            color: #fbf1c7;
+            border: none;
+        }
+        .textarea, input[type=text] {
+            border: none;
+            background-color: #665c54;
+            color: #ebdbb2;
+        }
+
+        input[type=file]::file-selector-button {
+            border: none;
+            background-color: #665c54;
+            color: #ebdbb2;
+            cursor: pointer;
+            border-radius: 0.25rem;
+        }
+    </style>
 {% endblock head %}
 {% block content %}
     <div class="info_block">
         {% load crispy_forms_tags %}
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <input class="btn btn-warning" type="submit" value="Submit">
         </form>
     </div>

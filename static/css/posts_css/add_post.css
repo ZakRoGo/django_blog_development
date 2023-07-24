@@ -11,8 +11,8 @@
 
 input[type=file]::file-selector-button {
     border: none;
-    border-right: 1px solid #928374;
     background-color: #665c54;
     color: #ebdbb2;
     cursor: pointer;
+    border-radius: .25rem;
 }
