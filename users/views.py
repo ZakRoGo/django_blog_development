@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from .models import Profile
+from posts.models import Post
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import RegisterUserForm
 from django.contrib.auth import login
@@ -29,7 +30,8 @@ def register_request(request):
 
 def user_profile(request, username):
     u = User.objects.get(username=username)
-    return render(request, "users_app/user_profile.html", {"username": u})
+    p = Post.objects.all().filter(author__username=username)
+    return render(request, "users_app/user_profile.html", {"username": u, "posts": p})
 
 
 @login_required

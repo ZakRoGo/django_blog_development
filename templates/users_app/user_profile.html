@@ -7,11 +7,11 @@
     <title>Profile Page</title>
 {% endblock head %}
 {% block content %}
-    <div class="info_block">
-        <div class="photo">
-            <img src="{{ username.profile.image.url }}" width="200px" />
-        </div>
-        <div class="info">
+    <div class="container">
+        <div class="left_block">
+            <div class="photo">
+                <img src="{{ username.profile.image.url }}" width="200px" />
+            </div>
             <div class="username">
                 <b>{{ username.username }}</b>
                 {% if username.profile.tg_url or username.profile.youtube_url %}
@@ -25,10 +25,45 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="line"></div>
-            <div class="bio">
-                <b>Bio:</b> {{ username.profile.bio }}
-            </div>
+            {% if username.username == user.username %}
+                <form action="{% url 'users:edit_profile' %}">
+                    <button class="btn btn-warning btn-sm edit_profile">Edit profile</button>
+                </form>
+            {% endif %}
+        </div>
+        <div class="right_block">
+            {% if username.profile.bio %}
+                <div class="info_block">
+                    <div class="for_bg">
+                        <div class="info">
+                            <div class="bio">
+                                {% if username.profile.bio %}
+                                    <span class="text"><b>A few details about myself</b></span>
+                                    {{ username.profile.bio }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="for_bg">
+                    <div class="info_block" style="text-align: center;">Nothing found...</div>
+                </div>
+            {% endif %}
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="info_block">
+                        <div class="for_bg">
+                            <a class="title" href="{% url 'posts:post_detail' post.pk %}" class="detail_link">
+                                <h4>
+                                    <b>{{ post.title }}</b>
+                                </h4>
+                            </a>
+                            <div class="description">{{ post.description }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

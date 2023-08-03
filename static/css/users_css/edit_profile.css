@@ -11,12 +11,6 @@
     height:190px;
     object-fit:cover;
     border-radius: 50%;
-    border: 3px solid #ebdbb2;
-}
-
-.line {
-    border-top: 1px solid #665c54;
-    margin: 0 auto 10px auto;
 }
 
 .form-control, .form-control-file {
@@ -31,6 +25,10 @@
 .textarea:focus, input[type=text]:focus {
     background-color: #928374;
     color: #fbf1c7;
+}
+.textarea {
+    min-height: 100px;
+    min-width: 200px;
 }
 input[type=text] {
     background-color: #665c54;

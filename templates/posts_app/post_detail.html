@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/posts_css/post_detail.css' %}" />
@@ -6,24 +7,45 @@
 {% endblock head %}
 {% block content %}
     <div class="info_block">
-        <div class="photo">
-            <img src="{{ post.author.profile.image.url }}" width="200px">
+        <div class="author">
+            <div class="profile_image">
+                <a href="{% url 'users:user_profile' post.author.username %}"><img src="{{ post.author.profile.image.url }}"></a>
+            </div>
+            <div class="author_info">
+                <div class="author_name">
+                    <a href="{% url 'users:user_profile' post.author.username %}"><span>{{ post.author }}</span></a>
+                </div>
+                <div class="date"><span>{{ post.date }}</span></div>
+            </div>
         </div>
-        <div class="username">
-            <a href="{% url 'users:user_profile' post.author.username %}"><b>{{ post.author.profile.user.username }}</b></a>
+        <div class="for_bg">
+            <div class="title">
+                <h4>
+                    <b>{{ post.title }}</b>
+                </h4>
+            </div>
+            <div class="description">{{ post.description }}</div>
         </div>
-        <div class="line"></div>
-        <div class="title">
-            <h3>
-                <b>{{ post.title }}</b>
-            </h3>
-        </div>
-        <div class="description">{{ post.description }}</div>
         {% if post.image %}
             <div class="image">
-                <img src="{{ post.image.url }}">
+                <img src="{{ post.image.url }}" />
             </div>
         {% endif %}
+        <div class="for_bg">
+            <div class="write_comment">
+                {% for comment in comments %}
+                    <div class="comments">
+                        {{ comment.body }} - {{ comment.author }}
+                        <br>
+                    </div>
+                {% endfor %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ comment_form|crispy }}
+                    <button class="btn btn-warning">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
     {% if post.author.profile.user.username == user.username or user.is_staff %}
         <div class="info_block redact">

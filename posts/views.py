@@ -1,7 +1,9 @@
 from django.contrib.auth.views import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Post
-from .forms import NewsContentForm, PostForm
+from django.urls import reverse
+from .models import Comment, Likes, Post
+from .forms import CommentForm, NewsContentForm, PostForm
 
 
 # Create your views here.
@@ -15,7 +17,25 @@ def post_page(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, "posts_app/post_detail.html", {"post": post})
+    comments = Comment.objects.all().filter(post__pk=pk)
+    new_comment = None
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.author = request.user
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    context = {
+        "post": post,
+        "comments": comments,
+        "new_comment": new_comment,
+        "comment_form": comment_form,
+    }
+    return render(request, "posts_app/post_detail.html", context)
 
 
 @login_required
@@ -48,3 +68,20 @@ def update_post(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, "posts_app/update_post.html", {"form": form})
+
+
+def like(request, post_id):
+    user = request.user
+    post = get_object_or_404(Post, id=post_id)
+    current_likes = post.likes
+    liked = Likes.objects.filter(user=user, post=post).count()
+    if not liked:
+        liked = Likes.objects.create(user=user, post=post)
+        current_likes += 1
+    else:
+        liked = Likes.objects.filter(user=user, post=post).delete()
+        current_likes -= 1
+
+    post.likes = current_likes
+    post.save()
+    return HttpResponseRedirect(reverse("posts:post"))

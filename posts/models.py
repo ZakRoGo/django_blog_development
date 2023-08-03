@@ -13,9 +13,26 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, related_name="author"
     )
+    likes = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.id}: {self.title}"
 
     def get_absolute_url(self):
         return reverse("post")
+
+
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_likes")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_likes")
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    body = models.TextField()
+    date = models.DateTimeField(default=now)
+    active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "%s - %s" % (self.post.title, self.author)

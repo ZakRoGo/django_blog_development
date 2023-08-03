@@ -1,6 +1,6 @@
 body {
     background: #282828;
-    font-family: "URW Gothic", Regular Oblique;
+    font-family: 'Source Sans Pro', Regular;
     font-size: 19px;
     color: #ebdbb2;
 }
@@ -19,6 +19,13 @@ body {
     padding: 10px;
     border-radius: 10px;
     word-wrap: break-word;
+}
+
+.for_bg {
+    background-color: #665c54;
+    border-radius: 10px;
+    padding: 10px;
+    height: fit-content;
 }
 
 .nav-list {

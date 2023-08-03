@@ -11,6 +11,7 @@
                 integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
         {% block head %}
         {% endblock head %}
     </head>
@@ -36,9 +37,6 @@
                     </div>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <div class="nav-item">
-                        <a href="{% url 'users:edit_profile' %}">Edit Profile</a>
-                    </div>
                     <div class="nav-item left_side">
                         <a href="{% url 'users:logout' %}">Logout</a>
                     </div>

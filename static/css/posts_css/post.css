@@ -1,47 +1,86 @@
-.date {
-    font-size: 12px;
-    font-style: italic;
-    margin: 5px 0 0 0;
-    color: #a89984;
-    text-align: end;
+.author {
+    display: flex;
+    align-items: center;
+    background-color: #665c54;
+    padding: 3px 10px 3px 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 180px;
 }
 
-.author {
-    font-size: 14px;
-    margin: 0px 0px 0px 0px;
+.author_info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_image {
+    position: relative;
+    overflow:hidden;
+    width: 40px;
+    height: 40px;
+    margin-right: 7px;
+}
+.profile_image img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    object-fit:cover;
+    border-radius: 50%;
+}
+
+.author_name {
+    font-size: 18px;
     color: #a89984;
+}
+
+.date {
+    font-size: 12px;
+    color: #a89984;
+    cursor: default;
 }
 
 .title h3 {
     margin: 5px 0px 0px 0px;
 }
 
-.description p {
-    margin: 10px 0 5px 0;
+.for_bg {
+    margin-bottom: 10px;
 }
 
-.image img {
-    margin: 5px 0 0 0;
+p {margin: 0;}
+
+.image {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: #665c54;
+    border-radius: 10px;
     max-width: 100%;
+    margin-bottom: 10px;
 }
 
 .line {
-    border: 1px solid #665c54;
+    border: 1px solid #ebdbb2;
     border-radius: 100%;
 }
 
-.author a:link, a:visited, a:active {
+a:link, a:visited, a:active {
     text-decoration: none;
     color: #ebdbb2;
 }
-.author a:hover {
+a:hover {
     color: #d5c4a1;
 }
 
-.detail_link:link, .detail_link:visited, .detail_link:active {
-    text-decoration: none;
-    color: #ebdbb2;
+.like {
+    display: inline-block;
 }
-.detail_link:hover {
-    color: #d5c4a1;
+.like a {
+    background-color: #665c54;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 3px;
+    padding: 0 5px 0 5px;
 }
