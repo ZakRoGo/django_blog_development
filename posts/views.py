@@ -1,4 +1,5 @@
 from django.contrib.auth.views import login_required
+from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -12,7 +13,11 @@ def home_page(request):
 
 
 def post_page(request):
-    return render(request, "posts_app/post.html", {"posts": Post.objects.all()})
+    posts = Post.objects.annotate(num_comments=Count("comments")).all()
+    context = {
+        "posts": posts,
+    }
+    return render(request, "posts_app/post.html", context)
 
 
 def post_detail(request, pk):
@@ -26,6 +31,7 @@ def post_detail(request, pk):
             new_comment.post = post
             new_comment.author = request.user
             new_comment.save()
+            return HttpResponseRedirect(request.path)
     else:
         comment_form = CommentForm()
 
@@ -36,6 +42,12 @@ def post_detail(request, pk):
         "comment_form": comment_form,
     }
     return render(request, "posts_app/post_detail.html", context)
+
+
+def delete_comment(request, comment_id):
+    com = get_object_or_404(Comment, pk=comment_id)
+    com.delete()
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
 
 @login_required
