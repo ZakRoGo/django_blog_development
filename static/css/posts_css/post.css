@@ -39,7 +39,6 @@ a:hover {
 
 .like, .comments {
     display: inline-block;
-    margin-bottom: 10px;
 }
 .like a, .comments a {
     background-color: #665c54;
