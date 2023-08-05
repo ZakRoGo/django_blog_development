@@ -1,8 +1,12 @@
 from django.contrib.auth.views import login_required
 from django.db.models import Count
+from django.forms import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import PostSerializer
 from .models import Comment, Likes, Post
 from .forms import CommentForm, NewsContentForm, PostForm
 
@@ -10,6 +14,20 @@ from .forms import CommentForm, NewsContentForm, PostForm
 # Create your views here.
 def home_page(request):
     return render(request, "home.html")
+
+
+class PostAPIView(APIView):
+    def get(self, request):
+        posts = Post.objects.all().values()
+        return Response({"posts": posts})
+
+    def post(self, request):
+        new_post = Post.objects.create(
+            title=request.data["title"],
+            description=request.data["description"],
+            image=request.data["image"],
+        )
+        return Response({"post": model_to_dict(new_post)})
 
 
 def post_page(request):

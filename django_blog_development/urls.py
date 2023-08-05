@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from posts.views import home_page
+from posts.views import home_page, PostAPIView
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -25,6 +25,7 @@ urlpatterns = [
     path("", home_page, name="home"),
     path("post/", include("posts.urls")),
     path("user/", include("users.urls")),
+    path("api/v1/postlist/", PostAPIView.as_view()),
 ]
 
 # for images
